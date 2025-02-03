@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjan Gurung - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <header class="px-4 lg:px-6 h-16 flex items-center fixed w-full bg-white dark:bg-gray-900 z-10 shadow-md">
+        <a class="flex items-center justify-center" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+            </svg>
+            <span class="ml-2 text-xl font-bold">Anjan Gurung</span>
+        </a>
+
+        <nav class="ml-auto flex gap-4 sm:gap-6">
+            <a class="text-sm font-medium hover:text-blue-500 transition-colors" href="#about">About</a>
+            <a class="text-sm font-medium hover:text-blue-500 transition-colors" href="#skills">Skills</a>
+            <a class="text-sm font-medium hover:text-blue-500 transition-colors" href="#projects">Projects</a>
+            <a class="text-sm font-medium hover:text-blue-500 transition-colors" href="#contact">Contact</a>
+        </nav>
+        <button id="darkModeToggle" class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block dark:hidden"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+    </header>
+
+    <main class="pt-16">
+        <section class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+            <div class="container px-4 md:px-6 mx-auto">
+                <div class="flex flex-col items-center space-y-4 text-center animate-fade-in">
+                    <div class="space-y-2">
+                        <h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none">
+                            Anjan Gurung
+                        </h1>
+                        <p class="mx-auto max-w-[700px] text-xl md:text-2xl text-blue-100">
+                            Computer Programming Student | Aspiring Software Developer
+                        </p>
+                    </div>
+                    <div class="space-x-4">
+                        <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-white text-blue-600 hover:bg-blue-50 h-11 px-8 py-2 shadow-lg hover:shadow-xl transition-shadow">Download CV</a>
+                        <a href="#contact" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-white text-white hover:bg-white hover:text-blue-600 h-11 px-8 py-2">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about" class="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-800">
+            <div class="container px-4 md:px-6 mx-auto">
+                <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/2">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Anjan Gurung" class="rounded-full shadow-lg mx-auto" width="300" height="300" />
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <p class="text-lg text-gray-600 dark:text-gray-300">
+                            I'm Anjan Gurung, a final year computer programming student passionate about creating efficient and innovative software solutions. With a strong foundation in various programming languages and technologies, I'm eager to contribute to the world of software development.
+                        </p>
+                        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                            My journey in tech has been driven by curiosity and a desire to solve real-world problems through code. I'm constantly learning and adapting to new technologies, ensuring I stay at the forefront of the ever-evolving tech landscape.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-900">
+            <div class="container px-4 md:px-6 mx-auto">
+                <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">Skills</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
+                        <span class="text-lg font-semibold">JavaScript</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up" style="animation-delay: 0.1s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500 mb-4"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        <span class="text-lg font-semibold">Python</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up" style="animation-delay: 0.2s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400 mb-4"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+                        <span class="text-lg font-semibold">React</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up" style="animation-delay: 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 mb-4"><path d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2z"></path><circle cx="12" cy="9" r="3"></circle></svg>
+                        <span class="text-lg font-semibold">Node.js</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up" style="animation-delay: 0.4s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500 mb-4"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                        <span class="text-lg font-semibold">SQL</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up" style="animation-delay: 0.5s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-500 mb-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                        <span class="text-lg font-semibold">Git</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects" class="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-800">
+            <div class="container px-4 md:px-6 mx-auto">
+                <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">Projects</h2>
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="/placeholder.svg?height=200&width=400" alt="Project 1" class="w-full h-48 object-cover" />
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Project 1</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">An innovative web application that revolutionizes task management for teams.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-blue-500 hover:underline">View Project</a>
+                                <div class="flex space-x-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">React</span>
+                                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Node.js</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="/placeholder.svg?height=200&width=400" alt="Project 2" class="w-full h-48 object-cover" />
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Project 2</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">A machine learning-powered recommendation system for e-commerce platforms.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-blue-500 hover:underline">View Project</a>
+                                <div class="flex space-x-2">
+                                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Python</span>
+                                    <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">TensorFlow</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="/placeholder.svg?height=200&width=400" alt="Project 3" class="w-full h-48 object-cover" />
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Project 3</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">A real-time data visualization dashboard for monitoring system performance.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-blue-500 hover:underline">View Project</a>
+                                <div class="flex space-x-2">
+                                    <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">D3.js</span>
+                                    <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Express</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-900">
+            <div class="container px-4 md:px-6 mx-auto">
+                <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">Contact Me</h2>
+                <div class="max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 text-center">
+                        Feel free to reach out to me for any opportunities or collaborations.
+                    </p>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required />
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required />
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-300">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 md:mb-0">© 2024 Anjan Gurung. All rights reserved.</p>
+                <nav class="flex gap-4">
+                    <a href="https://github.com/AnjanGurz" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300">GitHub</a>
+                    <a href="https://www.linkedin.com/in/anjan-gurung-b1a18a285/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300">LinkedIn</a>
+                    <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300">Twitter</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./main.js"></script>
+</body>
+</html>
+
