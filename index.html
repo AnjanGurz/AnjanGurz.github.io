@@ -1,214 +1,570 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anjan Gurung - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .animate-slide-up {
-            animation: slideUp 0.5s ease-out;
-        }
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anjang Gurz — Software Developer</title>
+<meta name="description" content="Full-stack JavaScript developer. Building systems from fundamentals to AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050504;
+  --panel:#0b0b0a;
+  --panel-h:#0f0f0d;
+  --text:#e5e0d8;
+  --muted:#46433d;
+  --muted2:#797068;
+  --accent:#c8a96e;
+  --a10:rgba(200,169,110,.10);
+  --a20:rgba(200,169,110,.20);
+  --a40:rgba(200,169,110,.42);
+  --border:rgba(255,255,255,.055);
+}
+html,body{height:100%;overflow:hidden}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'DM Mono',monospace;font-weight:300;
+  cursor:none;-webkit-font-smoothing:antialiased;
+}
+
+/* CURSOR */
+.cur,.ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cur{width:4px;height:4px;background:var(--accent);transition:opacity .15s}
+.ring{width:26px;height:26px;border:1px solid rgba(200,169,110,.25);transition:all .2s ease}
+body.hov .cur{opacity:0}
+body.hov .ring{width:42px;height:42px;border-color:rgba(200,169,110,.65)}
+
+/* NOISE */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:900;opacity:.4;
+}
+
+/* BENTO */
+.bento{
+  display:grid;
+  grid-template-columns:238px 1fr 1fr;
+  grid-template-rows:1fr 1fr .78fr;
+  gap:1px;
+  background:var(--border);
+  height:100svh;width:100vw;
+}
+
+/* PANEL */
+.panel{
+  background:var(--panel);
+  position:relative;padding:1.8rem 2rem;
+  overflow:hidden;transition:background .35s;
+}
+.panel:hover{background:var(--panel-h)}
+.panel::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:20px 20px;pointer-events:none;z-index:0;
+}
+.panel::after{
+  content:'';position:absolute;inset:0;
+  border:1px solid transparent;pointer-events:none;z-index:3;
+  transition:border-color .35s;
+}
+.panel:hover::after{border-color:var(--a40)}
+.panel>*{position:relative;z-index:1}
+
+/* placement */
+.p-hero   {grid-column:1;grid-row:1/3}
+.p-about  {grid-column:2;grid-row:1}
+.p-status {grid-column:3;grid-row:1}
+.p-proj   {grid-column:2/4;grid-row:2}
+.p-contact{grid-column:1;grid-row:3}
+.p-stack  {grid-column:2;grid-row:3}
+.p-build  {grid-column:3;grid-row:3}
+
+/* label */
+.lbl{
+  font-size:.47rem;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--muted2);display:flex;align-items:center;gap:.6rem;
+  margin-bottom:1.4rem;
+}
+.lbl::before{content:'◈';color:var(--accent);font-size:.48rem}
+
+/* ────────────────────────────
+   HERO
+──────────────────────────── */
+.p-hero{display:flex;flex-direction:column;justify-content:space-between}
+.hero-sys{font-size:.44rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1.1rem}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:3.75rem;line-height:.86;letter-spacing:-.01em}
+.hero-name .ac{color:var(--accent)}
+.hero-role{font-size:.57rem;letter-spacing:.07em;color:var(--muted2);line-height:2;margin-top:.7rem}
+
+.nodemap-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:.4rem 0}
+.nodemap{width:100%;max-height:114px}
+.nm-line{stroke:var(--accent);stroke-width:.55;stroke-dasharray:80;stroke-dashoffset:80;animation:drawL 1.1s ease forwards;opacity:.3}
+.nm-line:nth-child(2){animation-delay:.12s}
+.nm-line:nth-child(3){animation-delay:.24s}
+.nm-line:nth-child(4){animation-delay:.36s}
+@keyframes drawL{to{stroke-dashoffset:0}}
+.nm-node{fill:var(--accent);opacity:0;animation:fadeN .4s ease forwards}
+.nm-c{animation-delay:.65s}
+.nm-n1{animation-delay:.85s}
+.nm-n2{animation-delay:.92s}
+.nm-n3{animation-delay:.99s}
+.nm-n4{animation-delay:1.06s}
+@keyframes fadeN{to{opacity:.6}}
+.nm-lbl{font-family:'DM Mono',monospace;font-size:5px;fill:var(--muted2);letter-spacing:.08em;opacity:0;animation:fadeN .4s ease forwards}
+.nm-lbl:nth-of-type(1){animation-delay:.85s}
+.nm-lbl:nth-of-type(2){animation-delay:.92s}
+.nm-lbl:nth-of-type(3){animation-delay:.99s}
+.nm-lbl:nth-of-type(4){animation-delay:1.06s}
+
+.hero-links{display:flex;flex-direction:column;gap:.4rem}
+.hero-link{
+  font-size:.51rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  display:flex;align-items:center;gap:.45rem;transition:color .3s;
+}
+.hero-link::before{content:'→';color:var(--accent);transition:transform .3s}
+.hero-link:hover{color:var(--accent)}
+.hero-link:hover::before{transform:translateX(3px)}
+
+/* ────────────────────────────
+   ABOUT
+──────────────────────────── */
+.about-h{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;line-height:.9;margin-bottom:1rem}
+.about-h .em{color:var(--accent)}
+.about-body{font-size:.67rem;line-height:2.25;color:var(--muted2);margin-bottom:1.2rem}
+.about-body strong{color:var(--text);font-weight:400}
+.pills{display:flex;flex-wrap:wrap;gap:.32rem}
+.pill{
+  font-size:.45rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.17rem .52rem;border:1px solid var(--border);color:var(--muted2);
+  transition:border-color .3s,color .3s;
+}
+.pill.hi{border-color:var(--accent);color:var(--accent)}
+.pill:hover{border-color:rgba(255,255,255,.14);color:var(--text)}
+
+/* ────────────────────────────
+   STATUS
+──────────────────────────── */
+.stat-avail{display:flex;align-items:center;gap:.55rem;margin-bottom:1.4rem}
+.live-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--accent);
+  animation:livePulse 2.5s ease infinite;
+}
+@keyframes livePulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(200,169,110,.6)}
+  50%{box-shadow:0 0 0 5px rgba(200,169,110,0)}
+}
+.avail-txt{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.srows{display:flex;flex-direction:column}
+.sr{display:flex;justify-content:space-between;align-items:baseline;padding:.52rem 0;border-bottom:1px solid var(--border)}
+.sr:last-child{border:none}
+.sr-k{font-size:.48rem;letter-spacing:.14em;color:var(--muted)}
+.sr-v{font-size:.56rem;color:var(--text);text-align:right;max-width:58%}
+.sr-v.ac{color:var(--accent)}
+
+/* ────────────────────────────
+   PROJECTS
+──────────────────────────── */
+.proj-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.9rem}
+.proj-hdr-t{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;line-height:1}
+.gh-lnk{
+  font-size:.46rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .3s;
+}
+.gh-lnk::after{content:' ↗'}
+.gh-lnk:hover{color:var(--accent)}
+
+.plist{display:flex;flex-direction:column}
+.prow{
+  display:grid;grid-template-columns:1.8rem 1fr auto auto;
+  gap:1.2rem;align-items:center;
+  padding:.95rem 0;border-top:1px solid var(--border);
+  position:relative;transition:padding-left .4s cubic-bezier(.16,1,.3,1);
+}
+.prow::before{
+  content:'';position:absolute;inset:0;
+  background:var(--a10);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .45s cubic-bezier(.16,1,.3,1);z-index:0;
+}
+.prow:hover{padding-left:.7rem}
+.prow:hover::before{transform:scaleX(1)}
+.prow:last-child{border-bottom:1px solid var(--border)}
+.prow>*{position:relative;z-index:1}
+.pnum{font-size:.44rem;letter-spacing:.18em;color:var(--muted)}
+.pinfo h3{font-family:'Bebas Neue',sans-serif;font-size:1.42rem;line-height:1}
+.pinfo p{font-size:.57rem;line-height:1.75;color:var(--muted2);margin-top:.22rem}
+.badge{
+  font-size:.41rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:.15rem .46rem;border:1px solid var(--border);color:var(--muted2);white-space:nowrap;
+}
+.badge.live{border-color:var(--accent);color:var(--accent)}
+.badge.wip{border-color:#e8a045;color:#e8a045}
+.plink{
+  font-size:.46rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  display:flex;align-items:center;gap:.3rem;transition:color .3s;white-space:nowrap;
+}
+.plink::after{content:'→';transition:transform .3s}
+.plink:hover{color:var(--accent)}
+.plink:hover::after{transform:translateX(3px)}
+.plink.off{pointer-events:none;opacity:.2}
+
+/* ────────────────────────────
+   CONTACT
+──────────────────────────── */
+.p-contact{display:flex;flex-direction:column;justify-content:space-between}
+.contact-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,3.1vw,3.3rem);line-height:.85}
+.contact-big .g{color:rgba(255,255,255,.07)}
+.contact-big .a{color:var(--accent)}
+.clinks{display:flex;flex-direction:column;gap:.38rem}
+.clink{
+  font-size:.49rem;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  display:flex;align-items:center;gap:.4rem;transition:color .3s;
+}
+.clink::before{content:'↗';color:var(--accent)}
+.clink:hover{color:var(--accent)}
+
+/* ────────────────────────────
+   STACK — 7 pillars from syllabus
+──────────────────────────── */
+.p-stack{display:flex;flex-direction:column}
+.sk-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  margin-top:.8rem;flex:1;
+}
+/* last row: 3 cells in a 4-col grid — span the last one */
+.sk-cell{
+  background:var(--panel);padding:.62rem .75rem;
+  transition:background .3s;
+  position:relative;overflow:hidden;
+}
+.sk-cell::before{
+  content:'';position:absolute;inset:0;
+  background:var(--accent);
+  transform:scaleY(0);transform-origin:bottom;
+  transition:transform .4s cubic-bezier(.16,1,.3,1);z-index:0;
+}
+.sk-cell:hover::before{transform:scaleY(1)}
+.sk-cell:hover{color:var(--bg)}
+.sk-cell>*{position:relative;z-index:1}
+.sk-name{font-family:'Bebas Neue',sans-serif;font-size:.95rem;line-height:1;transition:color .3s}
+.sk-sub{font-size:.4rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.14rem;transition:color .3s}
+.sk-cell:hover .sk-sub{color:rgba(0,0,0,.5)}
+/* wide cell */
+.sk-wide{grid-column:span 2}
+
+/* ────────────────────────────
+   BUILD
+──────────────────────────── */
+.p-build{display:flex;flex-direction:column}
+.build-name{font-family:'Bebas Neue',sans-serif;font-size:1.95rem;line-height:.88;margin-bottom:.65rem}
+.build-name .ac{color:var(--accent)}
+.build-desc{font-size:.63rem;line-height:2;color:var(--muted2);margin-bottom:.9rem}
+.build-tags{display:flex;flex-wrap:wrap;gap:.28rem;margin-bottom:.9rem}
+.btag{
+  font-size:.41rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.14rem .44rem;border:1px solid var(--border);color:var(--muted2);
+}
+.build-prog-label{
+  display:flex;justify-content:space-between;
+  font-size:.46rem;letter-spacing:.1em;color:var(--muted);margin-bottom:.35rem;
+}
+.build-bar{height:1px;background:var(--border);position:relative;margin-top:auto}
+.build-fill{
+  position:absolute;left:0;top:0;height:100%;
+  background:var(--accent);width:0;
+  transition:width 2s cubic-bezier(.16,1,.3,1) .5s;
+}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(10px);transition:opacity .65s ease,transform .65s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:960px){
+  html,body{height:auto;overflow:auto}
+  .bento{grid-template-columns:1fr;grid-template-rows:auto;height:auto}
+  .p-hero,.p-about,.p-status,.p-proj,.p-contact,.p-stack,.p-build{
+    grid-column:1!important;grid-row:auto!important;min-height:200px;
+  }
+  .p-hero{min-height:360px}
+  .p-proj{min-height:260px}
+  .sk-grid{grid-template-columns:repeat(4,1fr)}
+  .sk-wide{grid-column:span 2}
+}
+@media(max-width:480px){
+  .panel{padding:1.4rem 1.5rem}
+  .hero-name{font-size:3rem}
+  .prow{grid-template-columns:1.5rem 1fr}
+  .badge,.plink{display:none}
+  .sk-grid{grid-template-columns:repeat(2,1fr)}
+  .sk-wide{grid-column:span 1}
+}
+
+@keyframes fadeCenterNode{to{opacity:1}}
+@keyframes spinRing{to{transform:rotate(360deg)}}
+</style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-    <header class="px-4 lg:px-6 h-16 flex items-center fixed w-full bg-white dark:bg-gray-900 z-10 shadow-md">
-        <a class="flex items-center justify-center" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
-                <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-            </svg>
-            <span class="ml-2 text-xl font-bold">Anjan Gurung</span>
-        </a>
+<body>
 
-        <nav class="ml-auto flex gap-4 sm:gap-6">
-            <a class="text-sm font-medium hover:text-blue-500 transition-colors" href="#about">About</a>
-            <a class="text-sm font-medium hover:text-blue-500 transition-colors" href="#skills">Skills</a>
-            <a class="text-sm font-medium hover:text-blue-500 transition-colors" href="#projects">Projects</a>
-            <a class="text-sm font-medium hover:text-blue-500 transition-colors" href="#contact">Contact</a>
-        </nav>
-        <button id="darkModeToggle" class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block dark:hidden"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        </button>
-    </header>
+<div class="cur" id="cur"></div>
+<div class="ring" id="ring"></div>
 
-    <main class="pt-16">
-        <section class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-            <div class="container px-4 md:px-6 mx-auto">
-                <div class="flex flex-col items-center space-y-4 text-center animate-fade-in">
-                    <div class="space-y-2">
-                        <h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none">
-                            Anjan Gurung
-                        </h1>
-                        <p class="mx-auto max-w-[700px] text-xl md:text-2xl text-blue-100">
-                            Computer Programming Student | Aspiring Software Developer
-                        </p>
-                    </div>
-                    <div class="space-x-4">
-                        <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-white text-blue-600 hover:bg-blue-50 h-11 px-8 py-2 shadow-lg hover:shadow-xl transition-shadow">Download CV</a>
-                        <a href="#contact" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-white text-white hover:bg-white hover:text-blue-600 h-11 px-8 py-2">Contact Me</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="about" class="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-800">
-            <div class="container px-4 md:px-6 mx-auto">
-                <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">About Me</h2>
-                <div class="flex flex-col md:flex-row items-center gap-8">
-                    <div class="w-full md:w-1/2">
-                        <img src="/placeholder.svg?height=400&width=400" alt="Anjan Gurung" class="rounded-full shadow-lg mx-auto" width="300" height="300" />
-                    </div>
-                    <div class="w-full md:w-1/2">
-                        <p class="text-lg text-gray-600 dark:text-gray-300">
-                            I'm Anjan Gurung, a final year computer programming student passionate about creating efficient and innovative software solutions. With a strong foundation in various programming languages and technologies, I'm eager to contribute to the world of software development.
-                        </p>
-                        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
-                            My journey in tech has been driven by curiosity and a desire to solve real-world problems through code. I'm constantly learning and adapting to new technologies, ensuring I stay at the forefront of the ever-evolving tech landscape.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="skills" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-900">
-            <div class="container px-4 md:px-6 mx-auto">
-                <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">Skills</h2>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
-                        <span class="text-lg font-semibold">JavaScript</span>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up" style="animation-delay: 0.1s;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500 mb-4"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                        <span class="text-lg font-semibold">Python</span>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up" style="animation-delay: 0.2s;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400 mb-4"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
-                        <span class="text-lg font-semibold">React</span>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up" style="animation-delay: 0.3s;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 mb-4"><path d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2z"></path><circle cx="12" cy="9" r="3"></circle></svg>
-                        <span class="text-lg font-semibold">Node.js</span>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up" style="animation-delay: 0.4s;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500 mb-4"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-                        <span class="text-lg font-semibold">SQL</span>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300 animate-slide-up" style="animation-delay: 0.5s;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-500 mb-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                        <span class="text-lg font-semibold">Git</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="projects" class="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-800">
-            <div class="container px-4 md:px-6 mx-auto">
-                <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">Projects</h2>
-                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                        <img src="/placeholder.svg?height=200&width=400" alt="Project 1" class="w-full h-48 object-cover" />
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Project 1</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">An innovative web application that revolutionizes task management for teams.</p>
-                            <div class="flex justify-between items-center">
-                                <a href="#" class="text-blue-500 hover:underline">View Project</a>
-                                <div class="flex space-x-2">
-                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">React</span>
-                                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Node.js</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                        <img src="/placeholder.svg?height=200&width=400" alt="Project 2" class="w-full h-48 object-cover" />
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Project 2</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">A machine learning-powered recommendation system for e-commerce platforms.</p>
-                            <div class="flex justify-between items-center">
-                                <a href="#" class="text-blue-500 hover:underline">View Project</a>
-                                <div class="flex space-x-2">
-                                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Python</span>
-                                    <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">TensorFlow</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                        <img src="/placeholder.svg?height=200&width=400" alt="Project 3" class="w-full h-48 object-cover" />
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Project 3</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">A real-time data visualization dashboard for monitoring system performance.</p>
-                            <div class="flex justify-between items-center">
-                                <a href="#" class="text-blue-500 hover:underline">View Project</a>
-                                <div class="flex space-x-2">
-                                    <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">D3.js</span>
-                                    <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Express</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="contact" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-900">
-            <div class="container px-4 md:px-6 mx-auto">
-                <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">Contact Me</h2>
-                <div class="max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 text-center">
-                        Feel free to reach out to me for any opportunities or collaborations.
-                    </p>
-                    <form class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required />
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required />
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-300">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+<div class="bento">
 
-    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-4 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 md:mb-0">© 2024 Anjan Gurung. All rights reserved.</p>
-                <nav class="flex gap-4">
-                    <a href="https://github.com/AnjanGurz" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300">GitHub</a>
-                    <a href="https://www.linkedin.com/in/anjan-gurung-b1a18a285/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300">LinkedIn</a>
-                    <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300">Twitter</a>
-                </nav>
-            </div>
+  <!-- HERO -->
+  <div class="panel p-hero">
+    <div>
+      <p class="hero-sys">◈ SYS.001 / ANJANG.GURZ</p>
+      <div class="hero-name">ANJANG<br><span class="ac">GURZ</span></div>
+      <p class="hero-role">Full-Stack Developer<br>JavaScript · React · Node · MongoDB</p>
+    </div>
+
+    <div class="nodemap-wrap">
+      <svg class="nodemap" viewBox="0 0 210 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line class="nm-line" x1="105" y1="63" x2="36" y2="24"/>
+        <line class="nm-line" x1="105" y1="63" x2="174" y2="24"/>
+        <line class="nm-line" x1="105" y1="63" x2="36" y2="102"/>
+        <line class="nm-line" x1="105" y1="63" x2="174" y2="102"/>
+        <circle cx="105" cy="63" r="14" stroke="#c8a96e" stroke-width=".4" opacity=".15" stroke-dasharray="4 4"
+          style="animation:spinRing 14s linear infinite;transform-origin:105px 63px"/>
+        <circle class="nm-node nm-c" cx="105" cy="63" r="5.5"
+          style="animation:fadeCenterNode .4s ease .65s forwards;opacity:0"/>
+        <text x="105" y="66.5" text-anchor="middle"
+          font-family="'DM Mono',monospace" font-size="5" fill="#050504"
+          style="opacity:0;animation:fadeN .4s ease .8s forwards">AG</text>
+        <circle class="nm-node nm-n1" cx="36" cy="24" r="2.8"/>
+        <circle class="nm-node nm-n2" cx="174" cy="24" r="2.8"/>
+        <circle class="nm-node nm-n3" cx="36" cy="102" r="2.8"/>
+        <circle class="nm-node nm-n4" cx="174" cy="102" r="2.8"/>
+        <text class="nm-lbl" x="36" y="15" text-anchor="middle">ABOUT</text>
+        <text class="nm-lbl" x="174" y="15" text-anchor="middle">STACK</text>
+        <text class="nm-lbl" x="36" y="118" text-anchor="middle">PROJECTS</text>
+        <text class="nm-lbl" x="174" y="118" text-anchor="middle">CONTACT</text>
+      </svg>
+    </div>
+
+    <div class="hero-links">
+      <a href="https://github.com/anjangurz" target="_blank" class="hero-link">GitHub</a>
+      <a href="https://linkedin.com/in/anjangurz" target="_blank" class="hero-link">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="panel p-about rv">
+    <p class="lbl">01 / About</p>
+    <h2 class="about-h">Systems.<br>Not just<br><span class="em">pages.</span></h2>
+    <p class="about-body">
+      <strong>Anjang Gurz</strong> — Computer Programming graduate building full-stack JavaScript systems. I work across the entire stack: from <strong>networking fundamentals and REST APIs</strong> to <strong>React frontends, Node backends, and database design</strong>. I ship real projects and I'm actively looking for entry-level opportunities.
+    </p>
+    <div class="pills">
+      <span class="pill hi">Open for entry-level projects</span>
+      <span class="pill">CS Graduate</span>
+      <span class="pill">Full-Stack JS</span>
+      <span class="pill">Ships real work</span>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="panel p-status rv">
+    <p class="lbl">System Status</p>
+    <div class="stat-avail">
+      <div class="live-dot"></div>
+      <span class="avail-txt">Available for work</span>
+    </div>
+    <div class="srows">
+      <div class="sr">
+        <span class="sr-k">Role</span>
+        <span class="sr-v">Full-Stack Developer</span>
+      </div>
+      <div class="sr">
+        <span class="sr-k">Stack</span>
+        <span class="sr-v">JS · TS · React · Node · Next</span>
+      </div>
+      <div class="sr">
+        <span class="sr-k">Active build</span>
+        <span class="sr-v ac">POS · CECE</span>
+      </div>
+      <div class="sr">
+        <span class="sr-k">Open for</span>
+        <span class="sr-v ac">Entry-level projects</span>
+      </div>
+      <div class="sr">
+        <span class="sr-k">Exploring</span>
+        <span class="sr-v">AI · Agents · RAG</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="panel p-proj rv">
+    <div class="proj-hdr">
+      <p class="lbl" style="margin-bottom:0">02 / Work</p>
+      <a href="https://github.com/anjangurz" target="_blank" class="gh-lnk">GitHub</a>
+    </div>
+    <div class="plist">
+      <div class="prow">
+        <span class="pnum">01</span>
+        <div class="pinfo">
+          <h3>ANCRAGE</h3>
+          <p>Daily productivity system — streak tracking, deep-focus checklist, cognitive parking lot for mid-work thoughts. Live and deployed.</p>
         </div>
-    </footer>
+        <span class="badge live">Live</span>
+        <a href="https://anjangurz.github.io/ancrage/" target="_blank" class="plink">Visit</a>
+      </div>
+      <div class="prow">
+        <span class="pnum">02</span>
+        <div class="pinfo">
+          <h3>POS · CECE</h3>
+          <p>Point-of-sale and inventory system for a boutique fashion brand. Transaction processing, product catalog, real-time stock. In active development.</p>
+        </div>
+        <span class="badge wip">In Progress</span>
+        <a class="plink off">Soon</a>
+      </div>
+      <div class="prow">
+        <span class="pnum">03</span>
+        <div class="pinfo">
+          <h3>NEXT BUILD</h3>
+          <p>Full-stack project with React + Node + MongoDB. Ships when ready.</p>
+        </div>
+        <span class="badge">Upcoming</span>
+        <a class="plink off">—</a>
+      </div>
+    </div>
+  </div>
 
-    <script src="./main.js"></script>
+  <!-- CONTACT -->
+  <div class="panel p-contact rv">
+    <p class="lbl">04 / Contact</p>
+    <div class="contact-big">
+      <div class="g">LET'S</div>
+      <div class="a">BUILD.</div>
+    </div>
+    <div class="clinks">
+      <a href="https://github.com/anjangurz" target="_blank" class="clink">GitHub</a>
+      <a href="https://linkedin.com/in/anjangurz" target="_blank" class="clink">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- STACK — split: Building with / Exploring -->
+  <div class="panel p-stack rv">
+    <p class="lbl">03 / Stack</p>
+    <div class="sk-grid">
+
+      <!-- Building with — active, confident -->
+      <div class="sk-cell">
+        <p class="sk-name">JavaScript</p>
+        <p class="sk-sub">Building · OOP · Async · DOM · ES6+</p>
+      </div>
+      <div class="sk-cell">
+        <p class="sk-name">React</p>
+        <p class="sk-sub">Building · Hooks · State · Forms</p>
+      </div>
+      <div class="sk-cell">
+        <p class="sk-name">Node.js</p>
+        <p class="sk-sub">Building · HTTP · Event Loop · FS</p>
+      </div>
+      <div class="sk-cell">
+        <p class="sk-name">Express</p>
+        <p class="sk-sub">Building · REST APIs · Middleware</p>
+      </div>
+      <div class="sk-cell">
+        <p class="sk-name">MongoDB</p>
+        <p class="sk-sub">Building · NoSQL · Mongoose</p>
+      </div>
+      <div class="sk-cell">
+        <p class="sk-name">HTML / CSS</p>
+        <p class="sk-sub">Building · Responsive · Semantic</p>
+      </div>
+      <div class="sk-cell">
+        <p class="sk-name">Git</p>
+        <p class="sk-sub">Building · Version Control · GitHub</p>
+      </div>
+
+      <!-- Exploring — honest, forward-looking -->
+      <div class="sk-cell" style="background:var(--a10)">
+        <p class="sk-name">TypeScript</p>
+        <p class="sk-sub">Exploring · Types · Interfaces · Generics</p>
+      </div>
+      <div class="sk-cell" style="background:var(--a10)">
+        <p class="sk-name">Next.js</p>
+        <p class="sk-sub">Exploring · SSR · SSG · Server Actions</p>
+      </div>
+      <div class="sk-cell sk-wide" style="background:var(--a10)">
+        <p class="sk-name">AI · Agents</p>
+        <p class="sk-sub">Exploring · LLMs · RAG · Inngest · Vercel AI</p>
+      </div>
+      <div class="sk-cell sk-wide">
+        <p class="sk-name">Networking</p>
+        <p class="sk-sub">Building · DNS · HTTP/S · WebSocket · Client–Server</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BUILD -->
+  <div class="panel p-build rv">
+    <p class="lbl">Active Build</p>
+    <div class="build-name">POS ·<br><span class="ac">CECE</span></div>
+    <p class="build-desc">
+      End-to-end point-of-sale system for a boutique fashion brand. Handles product catalog, transactions, inventory, and stock reporting — built with the full JS stack.
+    </p>
+    <div class="build-tags">
+      <span class="btag">Node.js</span>
+      <span class="btag">Express</span>
+      <span class="btag">MongoDB</span>
+      <span class="btag">React</span>
+      <span class="btag">REST API</span>
+    </div>
+    <div>
+      <div class="build-prog-label">
+        <span>Build progress</span>
+        <span>~40%</span>
+      </div>
+      <div class="build-bar">
+        <div class="build-fill" id="bfill"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Cursor
+const cur=document.getElementById('cur'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,.prow,.sk-cell,.panel').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+// Stagger reveal on load (desktop — everything visible)
+const panels=document.querySelectorAll('.rv');
+if(window.innerWidth>960){
+  panels.forEach((p,i)=>setTimeout(()=>p.classList.add('on'),(i+1)*75));
+} else {
+  // Mobile: intersection observer
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*60);obs.unobserve(e.target)}
+    });
+  },{threshold:.1});
+  panels.forEach(p=>obs.observe(p));
+}
+
+// Build bar
+setTimeout(()=>{const b=document.getElementById('bfill');if(b)b.style.width='40%'},450);
+</script>
 </body>
 </html>
-
